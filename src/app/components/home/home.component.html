@@ -1,0 +1,29 @@
+<!-- search employee on the list of emloyees -->
+<mat-form-field class="example-full-width" style="float: right">
+  <mat-label>Search Employee</mat-label>
+  <input matInput placeholder="" [(ngModel)]="emplName" (input)="onSearch()" />
+</mat-form-field>
+<h1>Employees</h1>
+<br />
+<br />
+<mat-divider></mat-divider>
+<br />
+<br />
+<!-- create expansion panel to display the details of employee -->
+<mat-accordion multi="true">
+  <mat-expansion-panel *ngFor="let empl of employees">
+    <mat-expansion-panel-header>
+      {{ empl.employee_name }}
+    </mat-expansion-panel-header>
+    <p><strong>Id:</strong> {{ empl.id }}</p>
+    <p><strong>Salary:</strong> {{ empl.employee_salary }}</p>
+    <p><strong>Age:</strong> {{ empl.employee_age }}</p>
+    <mat-action-row>
+      <a mat-button color="primary" [routerLink]="['/edit', empl.id]">Edit</a>
+      <button mat-button color="warn" (click)="onDelete(empl.id)">
+        Delete
+      </button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<!-- <p *ngIf='employees.length <= 0'>No Employees!</p> -->

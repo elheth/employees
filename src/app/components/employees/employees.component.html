@@ -1,0 +1,25 @@
+<!-- Card with template driven Form to save employee -->
+<mat-card>
+  <form #f='ngForm'  (submit)='onAdd(f)' >
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput type="text" [ngModel]='employee?.employee_name' name='name' required #name='ngModel'>
+      <mat-error *ngIf="name.invalid">Please enter your Name!</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Salary</mat-label>
+      <input matInput type="text" [ngModel]='employee?.employee_salary' name='salary' required #salary='ngModel' minlength='4'>
+      <mat-error *ngIf="salary.invalid">Please enter your Salary!</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Age</mat-label>
+      <input matInput type="text" [ngModel]='employee?.employee_age' name='age' required #age='ngModel' minlength='2'>
+      <mat-error *ngIf="age.invalid">Please enter your Age!</mat-error>
+    </mat-form-field>
+    <br>
+    <br>
+    <button mat-raised-button color='accent' type="submit" [disabled]='!f.valid'>Save Employee</button>
+  </form>
+</mat-card>
